@@ -1,0 +1,16 @@
+html{
+  font-family: sans-serif;
+}
+
+#destinations_container > div{
+  display: block;
+  max-width: 300px;
+  height: 30em;
+  float: left;
+  margin: 1em;
+  overflow: hidden;
+}
+
+#destinations_container > div > img{
+  max-width: 100%;
+}

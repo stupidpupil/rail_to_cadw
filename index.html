@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang=en>
+  <head>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+      crossorigin="anonymous"></script>
+
+    
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Clicky Analytics -->
+    <script async src="//static.getclicky.com/101362842.js"></script>
+
+    <script src="main.js"></script>
+
+    <link rel="stylesheet" href="main.css" />
+
+    <title>Railway Stations to Cadw Sites</title>
+
+  </head>
+  <body>
+
+  <form id="origin_form">
+
+    <p>This website helps you find <a target="_blank" href="https://cadw.gov.wales">Cadw sites</a> within a few hours travel time from railway stations in Wales.</p>
+
+    <select id="station_select">
+      <option>Choose a railway station in Wales!</option>
+    </select>
+
+    <p>Travel times are approximate, based on travelling on the morning of Sat 4th June 2022, and include for waiting for infrequent services.</p>
+    <p>Not affliated with Cadw, Transport for Wales or Traveline Cymru. Uses <a target="_blank" href="https://stupidpupil.github.io/wales_ish_otp_graph/">transport data from multiple sources</a> and <a target="_blank" href="https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit">Cadw's list of sites</a></p>
+    <p>Always check transport and destination details before travelling!</p>
+  </form>
+
+
+  <div id="destinations_container">
+
+  </div>
+
+  </body>
+</html>
