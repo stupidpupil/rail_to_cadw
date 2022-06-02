@@ -93,7 +93,7 @@ station_selected = function(e){
     "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
     "<p class='summary'>" + site_details.summary + "</p>" +
     ttm_descs +
-    "<a target='_blank' href='" + traveline_cymru_url(station_details.properties.stop_name, site_details.name) + "'>Plan journey on Traveline Cymru</a>" +
+    "<a class='traveline_link' target='_blank' href='" + traveline_cymru_url(station_details.properties.stop_name, site_details.name) + "'>Plan journey on Traveline Cymru</a>" +
     "</div>"
     )
 
