@@ -1,5 +1,7 @@
 library(tidyverse)
+source("get_cadw_site_details.R")
 
+#TODO - determine open/closed status
 map_page <- rvest::read_html("https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit/map")
 
 geo_loc_elements <- map_page %>% rvest::html_elements(".monuments-map .geolocation-location")
@@ -11,18 +13,26 @@ cadw_sites <- tibble(
   name = character(0),
   summary = character(0),
   link_url = character(0),
-  image_url = character(0)
+  image_url = character(0),
+  any_alerts = logical(0),
+  free = logical(0)
 )
 
 for(el in geo_loc_elements){
+
+  link_url <- rvest::html_elements(el, ".teaser__link") %>% rvest::html_attr("href")
+  details <- get_cadw_site_details(link_url)
+
   cadw_sites <- cadw_sites %>% add_row(
     id = rvest::html_attr(el, "data-views-row-index") %>% as.integer(),
     latitude = rvest::html_attr(el, "data-lat") %>% as.double(),
     longitude = rvest::html_attr(el, "data-lng") %>% as.double(),
     name = rvest::html_elements(el, ".teaser__link") %>% rvest::html_text() %>% stringr::str_trim(),
     summary = rvest::html_elements(el, ".teaser__summary") %>% rvest::html_text() %>% stringr::str_trim(),
-    link_url = rvest::html_elements(el, ".teaser__link") %>% rvest::html_attr("href"),
-    image_url = paste0("https://cadw.gov.wales/", rvest::html_elements(el, ".teaser__image img") %>% rvest::html_attr("src"))
+    link_url = link_url,
+    image_url = paste0("https://cadw.gov.wales/", rvest::html_elements(el, ".teaser__image img") %>% rvest::html_attr("src")),
+    any_alerts = (length(details$alerts) > 0),
+    free = details$free
   )
 }
 

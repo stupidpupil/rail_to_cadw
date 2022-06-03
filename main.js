@@ -1,6 +1,6 @@
 var ttm;
 var cadw_sites;
-var stations;
+var origins;
 
 description_for_ttm_entry = function(ttme){
 
@@ -67,8 +67,7 @@ station_selected = function(e){
 
   var ttm_row = ttm.find(function(x){return(x.frm == station_id)})
 
-  var station_details = stations.find(function(x){return(x.properties.stop_id == station_id)})
-
+  var station_details = origins.find(function(x){return(x.properties.id == station_id)})
 
   var sort_order_for_destination = function (dest) {
     var p2s = dest.data.map(function(x){return(x.p2)})
@@ -84,17 +83,18 @@ station_selected = function(e){
 
     var ttm_descs = x.data.sort(function(a,b){return(a.p2-b.p2)})
     var ttm_descs = ttm_descs.map(description_for_ttm_entry).map(function(x){return("<p>"+x+"</p>")}).join("")
-
-    console.log(site_details)
-
-   dest_cont.append(
-    "<div>" +
-    "<img src='"+ site_details.image_url + "'>" +
-    "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
-    "<p class='summary'>" + site_details.summary + "</p>" +
-    ttm_descs +
-    "<a class='traveline_link' target='_blank' href='" + traveline_cymru_url(station_details.properties.stop_name, site_details.name) + "'>Plan journey on Traveline Cymru</a>" +
-    "</div>"
+    
+    dest_cont.append(
+      "<div>" +
+      "<img src='"+ site_details.image_url + "'>" +
+      "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
+      "<p class='summary'>" + site_details.summary + "</p>" +
+      ttm_descs +
+      "<a class='google_maps_link' target='_blank' href='https://www.google.com/maps/dir/?api=1&travelmode=transit&origin=" + 
+        station_details.geometry.coordinates[1] + "," + station_details.geometry.coordinates[0] +"&destination=" +
+        site_details.coordinates[1] + "," + site_details.coordinates[0] + "'>Plan journey on Google Maps</a>" +
+      //"<a class='traveline_link' target='_blank' href='" + traveline_cymru_url(station_details.properties.name, site_details.name) + "'>Plan journey on Traveline Cymru</a>" +
+      "</div>"
     )
 
   })
@@ -103,14 +103,14 @@ station_selected = function(e){
 
 $(function(){
 
-  $.getJSON("rail_stations.geojson", function (rail_stations) {
+  $.getJSON("origins.geojson", function (origins_data) {
     var station_select = $("#station_select")
 
 
-    stations = rail_stations.features;
+    origins = origins_data.features;
 
-    stations.forEach(function(x){
-      station_select.append("<option value='"+x.properties.id+"'>" + x.properties.stop_name + "</option>")
+    origins.forEach(function(x){
+      station_select.append("<option value='"+x.properties.id+"'>" + x.properties.name + "</option>")
     })
 
     station_select.on('change', station_selected)

@@ -12,10 +12,3 @@ readRDS("cycle_and_rail_ttm.rds") %>%
 	group_nest() %>% 
 	mutate(data = map(data, ~.x %>% group_by(to) %>% group_nest())) %>%
 	jsonlite::write_json("ttm.json")
-
-
-
-rail_stations <- gtfstools::read_gtfs("merged.walesish.gtfs.zip") %>%
-	gtfstools::convert_stops_to_sf() %>%
-	filter(stop_name %>% str_detect("Rail Station")) %>%
-	mutate(id=stop_id)
