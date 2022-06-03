@@ -89,7 +89,7 @@ station_selected = function(e){
       "<img src='"+ site_details.image_url + "'>" +
       "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
       "<p class='summary'>" + site_details.summary + ". " + (site_details.free ? "<span class='free'>Free.</span>" : "") + "</p>" +
-      (site_details.any_alerts ? "<p class='alerts'><a href='" + site_details.link_url + "''>Visitor alerts</a></p>" : "") +
+      (site_details.any_alerts ? "<p class='alerts'><a target='_blank' href='" + site_details.link_url + "''>Visitor alerts</a></p>" : "") +
       ttm_descs +
       "<a class='google_maps_link' target='_blank' href='https://www.google.com/maps/dir/?api=1&travelmode=transit&origin=" + 
         station_details.geometry.coordinates[1] + "," + station_details.geometry.coordinates[0] +"&destination=" +
