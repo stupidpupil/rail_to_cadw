@@ -26,7 +26,9 @@ html{
 }
 
 #destinations_container > div > img{
-  max-width: 100%;
+  width: 100%;
+  min-height: 198px;
+  background-color: #76998f;
 }
 
 #destinations_container > div > h2 > a{
@@ -37,6 +39,14 @@ html{
 #destinations_container > div > h2 > a:hover{
   text-decoration: underline !important;
   color: #206e58;
+}
+
+#destinations_container > div > h2{
+  margin: 0.7em 0em;
+}
+
+#destinations_container > div > p {
+  margin: 0.8em 0em;
 }
 
 .traveline_link{
@@ -64,11 +74,10 @@ html{
 
 .alerts a{
   text-decoration: none !important;
-  color: #c45d10;
+  color: #a84f0c;
 }
 
 .alerts a:hover{
   text-decoration: underline !important;
   color: #ec6907;
-
 }
