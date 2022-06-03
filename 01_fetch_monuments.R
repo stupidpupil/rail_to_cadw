@@ -1,7 +1,6 @@
 library(tidyverse)
 source("get_cadw_site_details.R")
 
-#TODO - determine open/closed status
 map_page <- rvest::read_html("https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit/map")
 
 geo_loc_elements <- map_page %>% rvest::html_elements(".monuments-map .geolocation-location")
