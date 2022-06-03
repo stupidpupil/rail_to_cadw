@@ -16,7 +16,11 @@ cadw_sites <- tibble(
   any_alerts = logical(0),
   free = logical(0),
   disabled_person_access = logical(0),
-  dogs_welcome = logical(0)
+  dogs_welcome = logical(0),
+  toilets = logical(0),
+  accessible_toilets = logical(0),
+  baby_changing = logical(0),
+  refreshments = logical(0)
 )
 
 for(el in geo_loc_elements){
@@ -35,7 +39,11 @@ for(el in geo_loc_elements){
     any_alerts = (length(details$alerts) > 0),
     free = details$free,
     disabled_person_access = any(details$facilities == "Disabled person access"),
-    dogs_welcome = any(details$facilities == "Dogs welcome")
+    dogs_welcome = any(details$facilities == "Dogs welcome"),
+    toilets = any(details$facilities == "Toilets"),
+    accessible_toilets = any(details$facilities == "Accessible toilets"),
+    baby_changing = any(details$facilities == "Baby changing"),
+    refreshments = any(details$facilities == "Refreshments")
   )
 }
 
