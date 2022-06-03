@@ -93,7 +93,7 @@ station_selected = function(e){
   destinations = destinations.map(function(x){
     var site_details = cadw_sites.find(function(cs){return(cs.id == x.to)})
 
-    var ttm_descs = x.data.sort(function(a,b){return(a.p2-b.p2)})
+    var ttm_descs = x.data.sort(function(a,b){return(a.lo-b.lo)})
     var ttm_descs = ttm_descs.map(description_for_ttm_entry).map(function(x){return("<p>"+x+"</p>")}).join("")
     
     dest_cont.append(
