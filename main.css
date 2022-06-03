@@ -40,9 +40,26 @@ html{
 }
 
 .google_maps_link{
+  color: #101f87;
   text-decoration: none !important;
 }
 
 .google_maps_link:hover{
+  color: #105187;
   text-decoration: underline !important;
+}
+
+.free{
+  font-style: italic;
+}
+
+.alerts a{
+  text-decoration: none !important;
+  color: #c45d10;
+}
+
+.alerts a:hover{
+  text-decoration: underline !important;
+  color: #ec6907;
+
 }
