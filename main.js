@@ -60,7 +60,7 @@ traveline_cymru_url = function(origin_name, dest_name){
 }
 
 station_selected = function(e){
-  var station_id = e.target.value;
+  var station_id = $('#station_select').val();
 
   var dest_cont = $('#destinations_container')
   dest_cont.empty()
@@ -77,6 +77,18 @@ station_selected = function(e){
   var destinations = ttm_row.data.sort(function(a,b){
     return(sort_order_for_destination(a)-sort_order_for_destination(b))
   });
+
+
+  $(".filter_checkbox").each(function(i, e){
+    console.log(e.name)
+
+    if(e.checked){
+      destinations = destinations.filter(function(d){ //Horrendously inefficient
+        var site_details = cadw_sites.find(function(cs){return(cs.id == d.to)})
+        return(site_details[e.name])
+      })
+    }
+  })
 
   destinations = destinations.map(function(x){
     var site_details = cadw_sites.find(function(cs){return(cs.id == x.to)})
@@ -104,7 +116,7 @@ station_selected = function(e){
 
 $(function(){
 
-  $.getJSON("origins.geojson?220603T1220", function (origins_data) {
+  var req1 = $.getJSON("origins.geojson?220603T1220", function (origins_data) {
     var station_select = $("#station_select")
 
 
@@ -114,18 +126,22 @@ $(function(){
       station_select.append("<option value='"+x.properties.id+"'>" + x.properties.name + "</option>")
     })
 
-    station_select.on('change', station_selected)
+    $("#origin_form").on('change', station_selected)
 
   });
 
-  $.getJSON("cadw_sites.geojson?220603T1220", function (cadw_sites_data) {
+  var req2 = $.getJSON("cadw_sites.geojson?220603T1320", function (cadw_sites_data) {
     cadw_sites = cadw_sites_data.features.map(function(x){return({...(x.properties), ...(x.geometry)})})
   });
 
 
-  $.getJSON("ttm.json?220603T1220", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?220603T1220", function (ttm_data) {
     ttm = ttm_data
   });
 
+  $.when(req1.done(), req2.done(), req3.done()).then(function(){
+    $("#origin_form select").attr('disabled', false)
+    $("#origin_form input").attr('disabled', false)
+  })
 
 })

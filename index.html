@@ -15,11 +15,11 @@
     <!-- Clicky Analytics -->
     <script async src="//static.getclicky.com/101362842.js"></script>
 
-    <script src="main.js?220603T1220"></script>
+    <script src="main.js?220603T1320"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="main.css?220603T1220" />
+    <link rel="stylesheet" href="main.css?220603T1320" />
 
 
     <title>Railway Stations to Cadw Sites</title>
@@ -31,13 +31,36 @@
 
     <p>This website helps you find <a target="_blank" href="https://cadw.gov.wales">Cadw sites</a> within a few hours travel time from railway stations in Wales.</p>
 
-    <select id="station_select">
+    <select id="station_select" disabled>
       <option>Choose a railway station or town in Wales!</option>
     </select>
 
-    <p>Travel times are approximate, based on travelling on the morning of Sat 4th June 2022, and include for waiting for infrequent services.</p>
-    <p>Not affliated with Cadw, Transport for Wales or Traveline Cymru. Uses <a target="_blank" href="https://stupidpupil.github.io/wales_ish_otp_graph/">transport data from multiple sources</a> and <a target="_blank" href="https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit">Cadw's list of sites</a></p>
-    <p>Always check transport and destination details before travelling!</p>
+
+    <div>
+      <div class="checkbox_wrapper">
+        <input class='filter_checkbox' type="checkbox" id="open" name="open" checked disabled>
+        <label for="open">Open</label>
+      </div>
+
+      <div class="checkbox_wrapper">
+        <input class='filter_checkbox' type="checkbox" id="dogs_welcome" name="dogs_welcome" disabled>
+        <label for="dogs_welcome">Dogs welcome</label>
+      </div>
+
+      <div class="checkbox_wrapper">
+        <input class='filter_checkbox' type="checkbox" id="free" name="free" disabled>
+        <label for="free">Free</label>
+      </div>
+
+
+      <div class="checkbox_wrapper">
+        <input class='filter_checkbox' type="checkbox" id="disabled_person_access" name="disabled_person_access" disabled>
+        <label for="disabled_person_access">Disabled person access</label>
+      </div>
+    </div>
+
+    <p>Travel times are approximate, based on travelling on the morning of Sat 4th June 2022, and include for waiting for infrequent services.<br> Cadw site details are as listed on the Cadw website on Fri 3rd June 2022.</p>
+    <p>Not affliated with Cadw, Transport for Wales or Traveline Cymru. Uses <a target="_blank" href="https://stupidpupil.github.io/wales_ish_otp_graph/">transport data from multiple sources</a> and <a target="_blank" href="https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit">Cadw's list of sites</a>.<br>Always check transport and destination details before travelling!</p>
   </form>
 
 

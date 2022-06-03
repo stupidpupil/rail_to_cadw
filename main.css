@@ -11,6 +11,11 @@ html{
   font-size: 2em;
 }
 
+.checkbox_wrapper{
+  display: inline-block;
+  margin: 1em 1em 0em 0em;
+}
+
 #destinations_container > div{
   display: block;
   max-width: 300px;

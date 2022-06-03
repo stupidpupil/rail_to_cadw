@@ -6,7 +6,7 @@ get_cadw_site_details <- function(cadw_site_url){
   ret <- list()
 
   ret$alerts <- cadw_site_html %>% rvest::html_elements(".alert-warning") %>% rvest::html_text2()
-  ret$facilities <- cadw_site_html %>% rvest::html_elements(".facility") %>% rvest::html_attr("title")
+  ret$facilities <- cadw_site_html %>% rvest::html_elements(".facility") %>% rvest::html_attr("title") %>% stringr::str_trim()
 
   ret$free <- all(
     cadw_site_html %>% 

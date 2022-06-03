@@ -15,7 +15,9 @@ cadw_sites <- tibble(
   link_url = character(0),
   image_url = character(0),
   any_alerts = logical(0),
-  free = logical(0)
+  free = logical(0),
+  disabled_person_access = logical(0),
+  dogs_welcome = logical(0)
 )
 
 for(el in geo_loc_elements){
@@ -32,9 +34,17 @@ for(el in geo_loc_elements){
     link_url = link_url,
     image_url = paste0("https://cadw.gov.wales/", rvest::html_elements(el, ".teaser__image img") %>% rvest::html_attr("src")),
     any_alerts = (length(details$alerts) > 0),
-    free = details$free
+    free = details$free,
+    disabled_person_access = any(details$facilities == "Disabled person access"),
+    dogs_welcome = any(details$facilities == "Dogs welcome")
   )
 }
+
+
+open_sites_link_urls <- rvest::read_html("https://cadw.gov.wales/visit/places-to-visit/find-a-place-to-visit/map?open_or_closed=1") %>%
+  rvest::html_elements(".teaser__link") %>% rvest::html_attr("href")
+
+cadw_sites$open <- cadw_sites$link_url %in% open_sites_link_urls
 
 cadw_sites <- cadw_sites %>% sf::st_as_sf(coords=c("longitude","latitude"), crs=4326)
 
