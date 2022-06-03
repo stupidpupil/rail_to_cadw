@@ -3,6 +3,10 @@ html{
   font-family: "Fira Sans", sans-serif;
 }
 
+#origin_form{
+  padding: 0em 1em;
+}
+
 #station_select{
   font-size: 2em;
 }
