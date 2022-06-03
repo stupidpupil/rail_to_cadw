@@ -43,7 +43,7 @@ time_for_traveline_cymru_url = function(){
 
 traveline_cymru_url = function(origin_name, dest_name){
 
-  var ret = "https://www.traveline.cymru/journey-planner-results/?search=1&&maxWalkDistanceMetres=1000"
+  var ret = "https://www.traveline.cymru/journey-planner-results/?search=1&&maxWalkDistanceMetres=3000"
 
   ret = ret + "&from=" + origin_name.replaceAll(" ", "+")
 
@@ -53,7 +53,7 @@ traveline_cymru_url = function(origin_name, dest_name){
 
   ret = ret + "&date=" + moment().unix()
 
-  ret = ret + "&timeMode=LeaveAfter&maxChanges=fewest&walkSpeed=4&maxWalkDistanceMetresRestricted="
+  ret = ret + "&timeMode=LeaveAfter&maxChanges=fewest&walkSpeed=3&maxWalkDistanceMetresRestricted="
 
 
   return(ret)
