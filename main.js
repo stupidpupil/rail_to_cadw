@@ -6,10 +6,10 @@ description_for_ttm_entry = function(ttme){
 
  var ret = ""
 
- ret = ret + ttme.p2
+ ret = ret + ttme.lo
 
- if(ttme.p8 && ttme.p8 != ttme.p2){
-  ret = ret + " - " + ttme.p8 + " minutes"
+ if(ttme.hi && ttme.hi != ttme.lo){
+  ret = ret + " - " + ttme.hi + " minutes"
  }else{
   ret = ret + " minutes"
  }
@@ -70,8 +70,8 @@ station_selected = function(e){
   var station_details = origins.find(function(x){return(x.properties.id == station_id)})
 
   var sort_order_for_destination = function (dest) {
-    var p2s = dest.data.map(function(x){return(x.p2)})
-    return(Math.min(...p2s))
+    var lows = dest.data.map(function(x){return(x.lo)})
+    return(Math.min(...lows))
   }
 
   var destinations = ttm_row.data.sort(function(a,b){
@@ -130,12 +130,12 @@ $(function(){
 
   });
 
-  var req2 = $.getJSON("cadw_sites.geojson?220603T1440", function (cadw_sites_data) {
+  var req2 = $.getJSON("cadw_sites.geojson?220603T1640", function (cadw_sites_data) {
     cadw_sites = cadw_sites_data.features.map(function(x){return({...(x.properties), ...(x.geometry)})})
   });
 
 
-  var req3 = $.getJSON("ttm.json?220603T1220", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?220603T1640", function (ttm_data) {
     ttm = ttm_data
   });
 
