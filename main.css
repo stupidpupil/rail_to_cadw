@@ -38,3 +38,11 @@ html{
 .traveline_link:hover{
   text-decoration: underline !important;
 }
+
+.google_maps_link{
+  text-decoration: none !important;
+}
+
+.google_maps_link:hover{
+  text-decoration: underline !important;
+}
