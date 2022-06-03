@@ -70,6 +70,7 @@ html{
 
 .free{
   font-style: italic;
+  white-space: nowrap;
 }
 
 .alerts a{
