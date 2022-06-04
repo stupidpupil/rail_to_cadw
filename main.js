@@ -2,16 +2,28 @@ var ttm;
 var cadw_sites;
 var origins;
 
+format_minutes = function(minutes){
+  if(minutes < 10){
+    return("less than 10")
+  }
+
+  return(minutes)
+}
+
 description_for_ttm_entry = function(ttme){
 
  var ret = ""
 
- ret = ret + ttme.lo
+ ret = ret + format_minutes(ttme.lo)
 
  if(ttme.hi && ttme.hi != ttme.lo){
   ret = ret + " - " + ttme.hi + " minutes"
  }else{
-  ret = ret + " minutes"
+  if(ttme.hi === undefined){
+    ret = ret + " minutes or more"
+  }else{
+    ret = ret + " minutes"
+  }
  }
 
  switch(ttme.m){
@@ -147,7 +159,7 @@ $(function(){
   });
 
 
-  var req3 = $.getJSON("ttm.json?2206041230", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?2206041510", function (ttm_data) {
     ttm = ttm_data
   });
 
