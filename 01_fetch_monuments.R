@@ -53,6 +53,9 @@ open_sites_link_urls <- rvest::read_html("https://cadw.gov.wales/visit/places-to
 
 cadw_sites$open <- cadw_sites$link_url %in% open_sites_link_urls
 
+cadw_sites <- cadw_sites %>%
+  mutate(summary = if_else(stringr::str_length(summary) > 0, summary, NA_character_))
+
 cadw_sites <- cadw_sites %>% sf::st_as_sf(coords=c("longitude","latitude"), crs=4326)
 
 unlink("cadw_sites.geojson")
