@@ -14,10 +14,22 @@ description_for_ttm_entry = function(ttme){
   ret = ret + " minutes"
  }
 
- if(ttme.m == "t"){
-  ret = ret + " by public transport and walking"
- }else{
-  ret = ret + " by train and cycling"
+ switch(ttme.m){
+  case 'tw':
+    ret = ret + " by public transport"
+    break;
+  case 'tww':
+    ret = ret + " by public transport and walking"
+    break;
+  case 'ww':
+    ret = ret + " by walking"
+    break;
+  case 'cr':
+    ret = ret + " by train and cycling"
+    break
+  case 'c':
+    ret = ret + " by cycling"
+    break;
  }
 
  return(ret)
