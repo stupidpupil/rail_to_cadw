@@ -19,7 +19,7 @@ for(ttm_path in Sys.glob("*_ttm.rds")){
 
 
 ttms %>% 
-	filter(!is.na(lo)) %>%
+	filter(!is.na(lo), lo > 120L) %>%
 	group_by(frm, to) %>%
 	group_modify(function(x, key) {
 
