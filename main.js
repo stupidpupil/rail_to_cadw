@@ -164,7 +164,7 @@ $(function(){
   });
 
 
-  var req3 = $.getJSON("ttm.json?2206041510", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?220605T1500", function (ttm_data) {
     ttm = ttm_data
   });
 
