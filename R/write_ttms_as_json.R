@@ -22,7 +22,7 @@ write_ttms_as_json <- function(output_path = "output/ttm.json"){
   }
 
 
-  ttms %>% 
+  ttms <- ttms %>% 
     filter(!is.na(lo), lo < 120L) %>%
     group_by(frm, to) %>%
     group_modify(function(x, key) {
@@ -67,6 +67,8 @@ write_ttms_as_json <- function(output_path = "output/ttm.json"){
     filter(!is.na(lo)) %>%
     group_by(frm) %>% 
     group_nest() %>% 
-    mutate(data = map(data, ~.x %>% group_by(to) %>% group_nest())) %>%
-    jsonlite::write_json("output/ttm.json")
+    mutate(data = map(data, ~.x %>% group_by(to) %>% group_nest()))
+
+    unlink("output/ttm.json")
+    ttms %>% jsonlite::write_json("output/ttm.json")
 }
