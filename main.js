@@ -145,7 +145,7 @@ station_selected = function(e){
 
 $(function(){
 
-  var req1 = $.getJSON("origins.geojson?220603T1220", function (origins_data) {
+  var req1 = $.getJSON("origins.geojson?220606T1350", function (origins_data) {
     var station_select = $("#station_select")
 
 
@@ -159,12 +159,12 @@ $(function(){
 
   });
 
-  var req2 = $.getJSON("cadw_sites.geojson?220603T1640", function (cadw_sites_data) {
+  var req2 = $.getJSON("cadw_sites.geojson?220606T1350", function (cadw_sites_data) {
     cadw_sites = cadw_sites_data.features.map(function(x){return({...(x.properties), ...(x.geometry)})})
   });
 
 
-  var req3 = $.getJSON("ttm.json?220605T1500", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?220606T1350", function (ttm_data) {
     ttm = ttm_data
   });
 
