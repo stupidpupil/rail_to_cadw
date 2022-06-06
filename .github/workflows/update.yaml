@@ -45,6 +45,7 @@ jobs:
         options(java.parameters = "-Xmx10G")
         devtools::load_all()
         run_cadw_vs_rail()
+      shell: Rscript {0}
 
     - name: Commit new output
       if: github.ref == 'refs/heads/main'
