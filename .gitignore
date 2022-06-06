@@ -3,3 +3,7 @@
 *.dat*
 *.osm.*
 *.gpkg
+output
+output/*
+data-raw
+data-raw/*
