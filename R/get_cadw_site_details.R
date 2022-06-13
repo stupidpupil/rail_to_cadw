@@ -6,9 +6,9 @@ get_cadw_site_details <- function(cadw_site_url){
   ret <- list()
 
   ret$name <- cadw_site_html %>% rvest::html_element(".banner__title") %>% rvest::html_text2() %>% tidy_some_text()
-  ret$summary <- cadw_site_html %>% rvest::html_element(".lead") %>% rvest::html_text2() %>% tidy_some_text()
+  ret$summary <- cadw_site_html %>% rvest::html_element("#overview .lead") %>% rvest::html_text2() %>% tidy_some_text()
   ret$link_url <- cadw_site_url
-
+  
   language_link_url <- cadw_site_html %>% rvest::html_element(".language-link:not(.is-active)")
 
   if(language_link_url %>% rvest::html_attr("hreflang") == "cy"){
