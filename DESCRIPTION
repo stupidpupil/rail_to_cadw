@@ -16,6 +16,7 @@ Imports:
   osmextract,
   r5r,
   jsonlite,
-  sf
+  sf,
+  checkmate
 Remotes:
   stupidpupil/UK2GTFS
