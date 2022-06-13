@@ -53,6 +53,13 @@ jobs:
         run_cadw_vs_rail()
       shell: Rscript {0}
 
+    - name: Upload output artefact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: output
+        if-no-files-found: error
+
     - name: Commit new output
       if: github.ref == 'refs/heads/main'
       run: |
