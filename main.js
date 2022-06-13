@@ -159,7 +159,7 @@ $(function(){
 
   });
 
-  var req2 = $.getJSON("cadw_sites.geojson?220606T1350", function (cadw_sites_data) {
+  var req2 = $.getJSON("cadw_sites.geojson?220613T1300", function (cadw_sites_data) {
     cadw_sites = cadw_sites_data.features.map(function(x){return({...(x.properties), ...(x.geometry)})})
   });
 
