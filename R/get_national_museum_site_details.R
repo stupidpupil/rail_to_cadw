@@ -10,6 +10,10 @@ get_national_museum_site_details <- function(national_museum_url){
 
   ret$image_url <- national_museum_html %>% rvest::html_element("meta[property=\"og:image:secure_url\"]") %>% rvest::html_attr("content")
 
+  if(is.na(ret$image_url)){
+    ret$image_url <- national_museum_html %>% rvest::html_element("meta[property=\"og:image\"]") %>% rvest::html_attr("content")
+  }
+
   ret$cy_link_url <- national_museum_html %>% rvest::html_element("#footer_language_switch") %>% rvest::html_attr("href") %>%
     stringr::str_replace("^(https?:)?//", "https://") 
 
