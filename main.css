@@ -33,13 +33,25 @@ html{
 
 #destinations_container > div > h2 > a{
   text-decoration: none !important;
-  color: #14382e;;
+  color: #14382e;
 }
 
 #destinations_container > div > h2 > a:hover{
   text-decoration: underline !important;
   color: #206e58;
 }
+
+#destinations_container > div.operated_by_national_museum_wales > h2 > a{
+  text-decoration: none !important;
+  color: #5c2b1f;
+}
+
+#destinations_container > div.operated_by_national_museum_wales > h2 > a:hover{
+  text-decoration: underline !important;
+  color: #8c4432;
+}
+
+
 
 #destinations_container > div > h2{
   margin: 0.7em 0em;

@@ -121,7 +121,7 @@ station_selected = function(e){
     var ttm_descs = ttm_descs.map(description_for_ttm_entry).map(function(x){return("<p>"+x+"</p>")}).join("")
     
     dest_cont.append(
-      "<div>" +
+      "<div class='operated_by_"+ site_details.operator+"'>" +
       "<img src='"+ site_details.image_url + "'>" +
       "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
       
@@ -145,7 +145,7 @@ station_selected = function(e){
 
 $(function(){
 
-  var req1 = $.getJSON("origins.geojson?220606T1350", function (origins_data) {
+  var req1 = $.getJSON("origins.geojson?220720T0100", function (origins_data) {
     var station_select = $("#station_select")
 
 
@@ -159,12 +159,12 @@ $(function(){
 
   });
 
-  var req2 = $.getJSON("cadw_sites.geojson?220613T1300", function (cadw_sites_data) {
+  var req2 = $.getJSON("sites.geojson?220720T0100", function (cadw_sites_data) {
     cadw_sites = cadw_sites_data.features.map(function(x){return({...(x.properties), ...(x.geometry)})})
   });
 
 
-  var req3 = $.getJSON("ttm.json?220606T1350", function (ttm_data) {
+  var req3 = $.getJSON("ttm.json?220720T0100", function (ttm_data) {
     ttm = ttm_data
   });
 
