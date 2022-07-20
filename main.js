@@ -122,7 +122,7 @@ station_selected = function(e){
     
     dest_cont.append(
       "<div class='operated_by_"+ site_details.operator+"'>" +
-      "<img src='"+ site_details.image_url + "'>" +
+      "<img src='"+ site_details.image_url + "' loading='lazy'>" +
       "<h2><a target='_blank' href='"+site_details.link_url+"'>" + site_details.name + "</a></h2>" +
       
       "<p class='summary'>" + 
