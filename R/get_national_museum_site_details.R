@@ -5,7 +5,7 @@ get_national_museum_site_details <- function(national_museum_url){
 
   ret <- list()
 
-  ret$name <- national_museum_html %>% rvest::html_element(".site_area_short_title") %>% rvest::html_text2() %>% tidy_some_text()
+  ret$name <- national_museum_html %>% rvest::html_element(".site_area_title") %>% rvest::html_text2() %>% tidy_some_text()
   ret$link_url <- national_museum_url
 
   ret$image_url <- national_museum_html %>% rvest::html_element("meta[property=\"og:image:secure_url\"]") %>% rvest::html_attr("content")
@@ -22,7 +22,7 @@ get_national_museum_site_details <- function(national_museum_url){
   ret$cy_link_url <- national_museum_html %>% rvest::html_element(".language_switch a") %>% rvest::html_attr("href") %>%
     stringr::str_replace("^(https?:)?//", "https://") 
 
-  ret$cy_name <- rvest::read_html(ret$cy_link_url) %>% rvest::html_element(".site_area_short_title") %>% rvest::html_text2() %>% tidy_some_text()
+  ret$cy_name <- rvest::read_html(ret$cy_link_url) %>% rvest::html_element(".site_area_title") %>% rvest::html_text2() %>% tidy_some_text()
 
 
   about_url <- paste0(national_museum_url, "/about")
