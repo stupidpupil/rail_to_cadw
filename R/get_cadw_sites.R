@@ -95,7 +95,7 @@
     stopifnot(cadw_sites$dogs_welcome %>% sum() > 40)
     stopifnot(cadw_sites$dogs_welcome %>% sum() < 100)
 
-    stopifnot(cadw_sites$disabled_person_access %>% sum() > 20)
+    stopifnot(cadw_sites$disabled_person_access %>% sum() > 15)
     stopifnot(cadw_sites$disabled_person_access %>% sum() < 100)
   }
 
