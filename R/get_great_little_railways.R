@@ -59,5 +59,7 @@ get_great_little_railways <- function(){
     )
   }
 
+  glrs <- glrs |> sf::st_as_sf(coords=c("longitude","latitude"), crs=4326)
+
   return(glrs)
 }
