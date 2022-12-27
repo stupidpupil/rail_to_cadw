@@ -8,8 +8,12 @@ run_cadw_vs_rail <- function() {
   nat_mus_sites <- get_national_museum_sites() %>%
     mutate(operator = "national_museum_wales")
 
+  glrs <- get_great_little_railways() |>
+    mutate(operator = "great_little_railways")
+
   sites <- cadw_sites %>%
-    bind_rows(nat_mus_sites)
+    bind_rows(nat_mus_sites) |>
+    bind_rows(glrs)
 
   unlink("output/sites.geojson")
   sites %>% sf::write_sf("output/sites.geojson")

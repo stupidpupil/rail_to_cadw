@@ -17,6 +17,7 @@ Imports:
   r5r,
   jsonlite,
   sf,
-  checkmate
+  checkmate,
+  PostcodesioR
 Remotes:
   stupidpupil/UK2GTFS
