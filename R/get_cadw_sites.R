@@ -52,7 +52,7 @@
       image_url = paste0("https://cadw.gov.wales/", rvest::html_elements(el, ".teaser__image img") %>% rvest::html_attr("src")),
       any_alerts = (length(details$alerts) > 0),
       free = details$free,
-      disabled_person_access = any(details$facilities == "Disabled person access"),
+      disabled_person_access = any(details$facilities == "Access guide"), #TODO: Investigate this properly
       dogs_welcome = any(details$facilities == "Dogs welcome"),
       toilets = any(details$facilities == "Toilets"),
       accessible_toilets = any(details$facilities == "Accessible toilets"),
