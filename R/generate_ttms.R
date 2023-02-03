@@ -7,13 +7,13 @@ generate_ttms <- function(origins, cadw_sites){
   departure_datetime <- departure_datetime %>% lubridate::force_tz(tzone="Europe/London")
 
   transit_and_almost_no_walk_ttm <- r5r::travel_time_matrix(r5r_core, 
-    origins=origins, destinations=cadw_sites, mode=c("WALK", "TRANSIT"), max_walk_dist=600, max_trip_duration=180L,
+    origins=origins, destinations=cadw_sites, mode=c("WALK", "TRANSIT"), max_walk_time=600/60, max_trip_duration=180L,
     departure_datetime = departure_datetime, time_window = 4*60, percentiles=c(5,20,33,66))
 
   transit_and_almost_no_walk_ttm %>% saveRDS("data-raw/transit_and_almost_no_walk_ttm.rds")
 
   transit_and_walk_ttm <- r5r::travel_time_matrix(r5r_core, 
-    origins=origins, destinations=cadw_sites, mode=c("WALK", "TRANSIT"), max_walk_dist=3000, max_trip_duration=180L,
+    origins=origins, destinations=cadw_sites, mode=c("WALK", "TRANSIT"), max_walk_time=3000/60, max_trip_duration=180L,
     departure_datetime = departure_datetime, time_window = 4*60, percentiles=c(5,20,33,66))
 
   transit_and_walk_ttm %>% saveRDS("data-raw/transit_and_walk_ttm.rds")
@@ -25,7 +25,7 @@ generate_ttms <- function(origins, cadw_sites){
   walk %>% saveRDS("data-raw/walk_ttm.rds")
 
   cycle_and_rail_ttm <- r5r::travel_time_matrix(r5r_core, 
-    origins=origins, destinations=cadw_sites, mode=c("BICYCLE", "RAIL"), max_bike_dist=9000, max_lts=4, max_trip_duration=180L,
+    origins=origins, destinations=cadw_sites, mode=c("BICYCLE", "RAIL"), max_bike_time=9000/200, max_lts=4, max_trip_duration=180L,
     departure_datetime = departure_datetime, time_window = 4*60, percentiles=c(5,20,33,66))
 
   cycle_and_rail_ttm %>% saveRDS("data-raw/cycle_and_rail_ttm.rds")
