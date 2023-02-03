@@ -15,7 +15,7 @@ write_ttms_as_json <- function(output_path = "output/ttm.json"){
     ttms <- ttms %>% bind_rows(
       readRDS(ttm_path) %>%
       mutate(path = basename(ttm_path)) %>%
-      rename(frm = from_id, to = to_id, lo = travel_time_p005, hi = travel_time_p066) %>% 
+      rename(frm = from_id, to = to_id, lo = travel_time_p05, hi = travel_time_p66) %>% 
       mutate(lo = munge_travel_time(lo), hi = munge_travel_time(hi)) %>%  
       select(frm, to, lo, hi, path)
     )
