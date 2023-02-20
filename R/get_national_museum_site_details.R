@@ -16,7 +16,7 @@ get_national_museum_site_details <- function(national_museum_url){
   }
 
   ret$image_url <- ret$image_url %>%
-    stringr::str_replace("^(https?:)?/?/(.+?)($)", "https://museum.wales/\\2")
+    rvest::url_absolute(national_museum_url)
 
 
   ret$cy_link_url <- national_museum_html %>% rvest::html_element(".language_switch a") %>% rvest::html_attr("href") %>%
