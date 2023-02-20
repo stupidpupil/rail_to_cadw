@@ -20,7 +20,7 @@ get_national_museum_site_details <- function(national_museum_url){
 
 
   ret$cy_link_url <- national_museum_html %>% rvest::html_element(".language_switch a") %>% rvest::html_attr("href") %>%
-    stringr::str_replace("^(https?:)?//", "https://") 
+    rvest::url_absolute(national_museum_url)
 
   ret$cy_name <- rvest::read_html(ret$cy_link_url) %>% rvest::html_element(".site_area_title") %>% rvest::html_text2() %>% tidy_some_text()
 
@@ -31,7 +31,7 @@ get_national_museum_site_details <- function(national_museum_url){
   ret$summary <- about_html %>% rvest::html_element(".slab h3") %>% rvest::html_text2() %>% tidy_some_text()
 
   cy_about_url <- about_html %>% rvest::html_element(".language_switch a") %>% rvest::html_attr("href") %>%
-    stringr::str_replace("^(https?:)?//", "https://")
+    rvest::url_absolute(national_museum_url)
 
   ret$cy_summary <- rvest::read_html(cy_about_url) %>% rvest::html_element(".slab h3") %>% rvest::html_text2() %>% tidy_some_text()
 
