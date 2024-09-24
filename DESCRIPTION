@@ -20,5 +20,5 @@ Imports:
   checkmate,
   PostcodesioR
 Remotes:
-  stupidpupil/UK2GTFS
+  stupidpupil/UK2GTFS,
   ipeaGIT/gtfstools
